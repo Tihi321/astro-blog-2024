@@ -5,14 +5,9 @@ import solidJs from "@astrojs/solid-js";
 import postcssNested from 'postcss-nested';
 import postcss from 'postcss';
 
-import { remarkReadingTime } from './plugins/remark-reading-time.mjs';
-
 
 // https://astro.build/config
 export default defineConfig({
-  markdown: {
-    remarkPlugins: [remarkReadingTime],
-  },
   site: 'https://example.com',
   integrations: [mdx(), sitemap(), solidJs()],
   outDir: './docs',

@@ -2,18 +2,26 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import { map } from "lodash-es";
+import { calculateReadingTime } from "../utils/posts";
 
 type Props = {
   posts: Array<CollectionEntry<"blog">>;
 };
 
 const { posts } = Astro.props;
+
+const data = map(posts, (post) => {
+  return {
+    ...post,
+    readingTime: calculateReadingTime(post.body),
+  };
+}) as any;
 ---
 
 <section>
   <ul>
     {
-      map(posts, (post) => (
+      map(data, (post) => (
         <li>
           <a href={`/post/${post.slug}/`}>
             <img width={720} height={360} src={post.data.heroImage} alt="" />
@@ -22,6 +30,10 @@ const { posts } = Astro.props;
           <p class="date">
             <FormattedDate date={post.data.pubDate} />
           </p>
+          {map(post.data.categories, (category) => (
+            <a href={`/blog/${category}/`}>{category}</a>
+          ))}
+          <p>{post.readingTime} min</p>
         </li>
       ))
     }

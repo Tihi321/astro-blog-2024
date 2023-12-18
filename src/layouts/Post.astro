@@ -5,8 +5,7 @@ import { ceil } from "lodash-es";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, pubDate, updatedDate, heroImage } = Astro.props;
-const time = ceil(Astro.props?.readingTime || 0);
+const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
 ---
 
 <article>
@@ -16,7 +15,7 @@ const time = ceil(Astro.props?.readingTime || 0);
   <div class="prose">
     <div class="title">
       <div class="date">
-        {time} min read -
+        {readingTime} min read -
         <FormattedDate date={pubDate} />
         {
           updatedDate && (
