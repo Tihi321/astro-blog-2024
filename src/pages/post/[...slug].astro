@@ -1,0 +1,49 @@
+---
+import { map } from "lodash-es";
+import { type CollectionEntry, getCollection } from "astro:content";
+import Post from "../../layouts/Post.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import BaseHead from "../../components/BaseHead.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return map(posts, (post) => ({
+    params: { slug: post.slug },
+    props: { ...post },
+  }));
+}
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content, remarkPluginFrontmatter } = await post.render();
+const data = {
+  ...post.data,
+  readingTime: remarkPluginFrontmatter.minutesRead,
+};
+const { title, description } = post.data;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <style>
+      main {
+        width: calc(100% - 2em);
+        max-width: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <Post {...data}>
+        <Content />
+      </Post>
+    </main>
+    <Footer />
+  </body>
+</html>
