@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { SearchList } from "../blocks/posts/SearchList.tsx";
+
+const allPosts = await getCollection("blog");
+---
+
+<Layout>
+  <SearchList posts={allPosts} client:only />
+</Layout>

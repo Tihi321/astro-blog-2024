@@ -1,5 +1,14 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import { filter, map, take } from "lodash-es";
+import { sortByDate } from "../utils/posts";
+
+const allPosts = await getCollection("blog");
+const featuredPosts = filter(allPosts, (post: any) => post.data?.featured);
+const sorted = sortByDate(featuredPosts);
+
+const firstThreeItems = take(sorted, 3);
 ---
 
 <Layout>
@@ -26,6 +35,7 @@ import Layout from "../layouts/Layout.astro";
   <p>
     Have fun! If you get stuck, remember to <a href="https://docs.astro.build/">read the docs</a> or
 
+
     <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
   </p>
   <p>
@@ -34,4 +44,16 @@ import Layout from "../layouts/Layout.astro";
       >astro-blog-template
     </a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
   </p>
+  <div class="featured">
+    {map(firstThreeItems, (post: any) => <a href={`/post/${post.slug}`}>{post.data.title}</a>)}
+  </div>
 </Layout>
+
+<style>
+  .featured {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+</style>

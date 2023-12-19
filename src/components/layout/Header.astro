@@ -2,6 +2,7 @@
 import { SITE_TITLE } from "../../consts.js";
 import ThemeSwitcher from "../inputs/ThemeSwitcher.astro";
 import HeaderLink from "../link/HeaderLink.astro";
+import { HeaderSearch } from "../../blocks/header/HeaderSearch.tsx";
 ---
 
 <header>
@@ -12,6 +13,7 @@ import HeaderLink from "../link/HeaderLink.astro";
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
       <ThemeSwitcher />
+      <HeaderSearch client:only />
     </div>
     <div class="social-links">
       <a href="https://m.webtoo.ls/@astro" target="_blank">

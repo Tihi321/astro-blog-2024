@@ -21,8 +21,6 @@ const { title, description } = Astro.props as { title?: string; description?: st
     window.localStorage.setItem("theme", theme || "light");
     const loader = document.querySelector("#loader");
 
-    console.log(loader);
-
     if (loader) {
       loader.classList.add("remove");
     }
@@ -39,9 +37,9 @@ const { title, description } = Astro.props as { title?: string; description?: st
     </style>
   </head>
   <body>
+    <div class="loader" id="loader"></div>
     <Header />
     <main>
-      <div class="loader" id="loader"></div>
       <slot />
     </main>
     <Footer />
