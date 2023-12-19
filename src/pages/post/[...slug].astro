@@ -2,10 +2,8 @@
 import { map } from "lodash-es";
 import { getCollection } from "astro:content";
 import Post from "../../layouts/Post.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import BaseHead from "../../components/BaseHead.astro";
 import { calculateReadingTime } from "../../utils/posts";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -18,30 +16,12 @@ export async function getStaticPaths() {
 }
 
 const post = Astro.props as any;
-console.log(Astro.props);
 const { Content } = await post.render();
 const { title, description } = post.data;
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
-    <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
-    </style>
-  </head>
-
-  <body>
-    <Header />
-    <main>
-      <Post {...post.data} readingTime={post?.readingTime}>
-        <Content />
-      </Post>
-    </main>
-    <Footer />
-  </body>
-</html>
+<Layout title={title} description={description}>
+  <Post {...post.data} readingTime={post?.readingTime}>
+    <Content />
+  </Post>
+</Layout>

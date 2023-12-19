@@ -1,10 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Posts from "../../../layouts/Posts.astro";
-import Header from "../../../components/Header.astro";
-import Footer from "../../../components/Footer.astro";
-import BaseHead from "../../../components/BaseHead.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../../consts";
+import Layout from "../../../layouts/Layout.astro";
 import { sortByDate } from "../../../utils/posts";
 import Pagination from "../../../layouts/Pagination.astro";
 import { includes, filter } from "lodash-es";
@@ -36,28 +33,13 @@ const pagedArray = page.url.current.split("/");
 const paged = `${pagedArray[1]}/${pagedArray[2]}`;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      main {
-        width: 960px;
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <Posts posts={page?.data} />
-      <Pagination
-        prevUrl={page.url.prev}
-        nextUrl={page.url.next}
-        currentPage={page.currentPage}
-        totalPages={page.lastPage}
-        paged={paged}
-      />
-    </main>
-    <Footer />
-  </body>
-</html>
+<Layout>
+  <Posts posts={page?.data} />
+  <Pagination
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    currentPage={page.currentPage}
+    totalPages={page.lastPage}
+    paged={paged}
+  />
+</Layout>

@@ -1,7 +1,7 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { ThemeSwitcher } from "../blocks/theme/ThemeSwitcher.jsx";
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE } from "../../consts.js";
+import ThemeSwitcher from "../inputs/ThemeSwitcher.astro";
+import HeaderLink from "../link/HeaderLink.astro";
 ---
 
 <header>
@@ -11,7 +11,7 @@ import { SITE_TITLE } from "../consts";
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
-      <ThemeSwitcher client:only />
+      <ThemeSwitcher />
     </div>
     <div class="social-links">
       <a href="https://m.webtoo.ls/@astro" target="_blank">
