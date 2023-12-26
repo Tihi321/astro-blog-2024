@@ -10,7 +10,7 @@ import postcss from 'postcss';
 export default defineConfig({
   site: 'https://example.com',
   integrations: [mdx(), sitemap(), solidJs()],
-  outDir: './docs',
+  outDir: './dist',
   site: 'https://www.tihomir-selak.from.hr',
   vite: {
     plugins: [
