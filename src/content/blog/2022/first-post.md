@@ -2,7 +2,7 @@
 title: "First post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-heroImage: "/images/blog-placeholder-3.jpg"
+heroImage: "/content/images/blog-placeholder-3.jpg"
 categories: ["ai"]
 featured: false
 ---

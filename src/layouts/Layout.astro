@@ -31,19 +31,6 @@ const { title, description } = Astro.props as { title?: string; description?: st
   <head>
     <BaseHead title={title || SITE_TITLE} description={description || SITE_DESCRIPTION} />
     <style>
-      main {
-        width: 960px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="loader" id="loader"></div>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <style>
       .loader {
         position: fixed;
         top: 0;
@@ -64,5 +51,13 @@ const { title, description } = Astro.props as { title?: string; description?: st
         transition: opacity 0.1s ease-in-out;
       }
     </style>
+  </head>
+  <body>
+    <div class="loader" id="loader"></div>
+    <main>
+      <Header />
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

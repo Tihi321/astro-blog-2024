@@ -2,7 +2,7 @@
 title: "Second post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 22 2022"
-heroImage: "/images/blog-placeholder-4.jpg"
+heroImage: "/content/images/blog-placeholder-4.jpg"
 categories: ["ai", "tech"]
 featured: true
 ---
