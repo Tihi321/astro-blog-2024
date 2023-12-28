@@ -6,8 +6,16 @@ import { HeaderSearch } from "../../blocks/header/HeaderSearch.tsx";
 import { MobileMenu } from "../../blocks/header/MobileMenu";
 ---
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("toggle-reading-mode", (e) => {
+      document.getElementById("header")?.classList.toggle("hidden");
+    });
+  });
+</script>
+
 <div class="container">
-  <header class="header">
+  <header class="header" id="header">
     <a href="/" title={SITE_TITLE} class="logo">
       <svg class="logo-image" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 130 126"
         ><path

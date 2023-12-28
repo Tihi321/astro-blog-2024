@@ -7,12 +7,44 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
 ---
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.key === "r") {
+        document.dispatchEvent(new CustomEvent("toggle-reading-mode"));
+      }
+    });
+    const readingModeButton = document.querySelector("#reading-mode");
+
+    readingModeButton?.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("toggle-reading-mode"));
+    });
+  });
+</script>
+
 <article class="post">
   <header class="hero">
     <h1 class="title">{title}</h1>
     {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
     <div class="info">
       <div class="reading-time">{readingTime} min read</div>
+      <button
+        title="Enable reading mode (Ctrl + r)"
+        type="button"
+        class="reading-mode"
+        id="reading-mode"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="bullet"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg></button
+      >
       <div class="date">
         <FormattedDate date={pubDate} />
         {
@@ -40,6 +72,17 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
     }
   }
 
+  .reading-mode {
+    cursor: pointer;
+    background: none;
+    border: none;
+    .bullet {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: var(--primary);
+    }
+  }
   .title {
     margin: 12px 0;
     text-align: center;

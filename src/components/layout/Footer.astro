@@ -8,8 +8,16 @@ const allPosts = await getCollection("blog");
 const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categories"], [])));
 ---
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("toggle-reading-mode", (e) => {
+      document.getElementById("footer")?.classList.toggle("hidden");
+    });
+  });
+</script>
+
 <div class="container">
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <div class="socials">
       <a href="mailto:tknox.dr@gmail.com" target="_blank">
         <svg
