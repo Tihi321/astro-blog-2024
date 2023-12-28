@@ -9,99 +9,89 @@ type Props = {
 };
 
 const { posts } = Astro.props;
-
-const data = map(posts, (post) => {
-  return {
-    ...post,
-    readingTime: calculateReadingTime(post.body),
-  };
-}) as any;
 ---
 
-<section>
-  <ul>
-    {
-      map(data, (post) => (
-        <li>
-          <a href={`/post/${post.slug}/`}>
-            <img width={720} height={360} src={post.data.heroImage} alt="" />
-            <h4 class="title">{post.data.title}</h4>
-          </a>
-          <p class="date">
+<ul class="posts">
+  {
+    map(posts, (post) => (
+      <li class="post">
+        <a class="post-link" href={`/post/${post.slug}/`}>
+          <img class="hero-image" width={720} height={360} src={post.data.heroImage} alt="" />
+          <h4 class="title">{post.data.title}</h4>
+        </a>
+        <div class="info">
+          <div class="categories">
+            {map(post.data.categories, (category) => (
+              <a class="category-link" href={`/blog/${category}/`}>
+                {category}
+              </a>
+            ))}
+          </div>
+          <div class="date">
+            <span class="reading-time">{calculateReadingTime(post.body)} min</span>
             <FormattedDate date={post.data.pubDate} />
-          </p>
-          {map(post.data.categories, (category) => (
-            <a href={`/blog/${category}/`}>{category}</a>
-          ))}
-          <p>{post.readingTime} min</p>
-        </li>
-      ))
-    }
-  </ul>
-</section>
+          </div>
+        </div>
+        <div class="description">{post.data.description}</div>
+      </li>
+    ))
+  }
+</ul>
 
 <style>
-  ul {
+  .posts {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: space-between;
     list-style-type: none;
+    gap: 8px;
     margin: 0;
     padding: 0;
-
-    li {
-      width: calc(50% - 1rem);
-      text-decoration: none;
-      transition: 0.2s ease;
-
-      img {
-        margin-bottom: 0.5rem;
-        border-radius: 12px;
-      }
-
-      a {
-        display: block;
-      }
-    }
-
-    li:first-child {
-      width: 100%;
-      margin-bottom: 1rem;
-      text-align: center;
-
-      img {
-        width: 100%;
-      }
-
-      .title {
-        font-size: 2.369rem;
-      }
-    }
-  }
-  .title {
-    margin: 0;
-    line-height: 1;
-  }
-  .date {
-    margin: 0;
   }
 
-  ul a:hover img {
-    box-shadow: var(--box-shadow);
+  .post {
+    width: 100%;
+    margin-bottom: 12px;
+    text-decoration: none;
+    transition: 0.2s ease;
+
+    .hero-image {
+      margin-bottom: 10px;
+      border-radius: 12px;
+    }
+
+    .post-link {
+      display: block;
+
+      &:hover {
+        img {
+          box-shadow: var(--box-shadow);
+        }
+      }
+    }
+
+    .title {
+      margin: 0;
+    }
+    .info {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
   }
-  @media (max-width: 720px) {
-    ul {
-      gap: 0.5em;
+
+  @media (min-width: 769px) {
+    .posts {
+      gap: 16px;
     }
-    ul li {
-      width: 100%;
-      text-align: center;
+
+    .title {
+      font-size: 32px;
     }
-    ul li:first-child {
-      margin-bottom: 0;
-    }
-    ul li:first-child .title {
-      font-size: 1.563em;
+
+    .post {
+      width: 49%;
     }
   }
 </style>

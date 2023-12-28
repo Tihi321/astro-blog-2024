@@ -34,6 +34,7 @@ const paged = `${pagedArray[1]}/${pagedArray[2]}`;
 ---
 
 <Layout>
+  <img class="homer-writing" src="/images/homer-writing.png" alt="Writing" />
   <Posts posts={page?.data} />
   <Pagination
     prevUrl={page.url.prev}
@@ -43,3 +44,11 @@ const paged = `${pagedArray[1]}/${pagedArray[2]}`;
     paged={paged}
   />
 </Layout>
+
+<style>
+  .homer-writing {
+    border: none;
+    width: 100%;
+    filter: drop-shadow(2px 2px 4px var(--primary));
+  }
+</style>

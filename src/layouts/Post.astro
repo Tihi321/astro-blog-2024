@@ -7,59 +7,57 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
 ---
 
-<article>
-  <div class="hero-image">
+<article class="post">
+  <header class="hero">
+    <h1 class="title">{title}</h1>
     {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-  </div>
-  <div class="prose">
-    <div class="title">
+    <div class="info">
+      <div class="reading-time">{readingTime} min read</div>
       <div class="date">
-        {readingTime} min read -
         <FormattedDate date={pubDate} />
         {
           updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
+            <span class="updated">
+              - Last updated on <FormattedDate date={updatedDate} />
+            </span>
           )
         }
       </div>
-      <h1>{title}</h1>
-      <hr />
     </div>
-    <slot />
-  </div>
+  </header>
+  <slot />
 </article>
 
 <style>
-  .hero-image {
+  .hero {
     width: 100%;
+
+    img {
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: var(--box-shadow);
+    }
   }
-  .hero-image img {
-    display: block;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow);
-  }
-  .prose {
-    width: 720px;
-    max-width: calc(100% - 2em);
-    margin: auto;
-    padding: 1em;
-  }
+
   .title {
-    margin-bottom: 1em;
-    padding: 1em 0;
+    margin: 12px 0;
     text-align: center;
-    line-height: 1;
+    font-size: 32px;
+
+    @media (min-width: 769px) {
+      font-size: 46px;
+    }
   }
-  .title h1 {
-    margin: 0 0 0.5em 0;
+
+  .info {
+    font-size: 12px;
+    margin-bottom: 0;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
   }
-  .date {
-    margin-bottom: 0.5em;
-  }
-  .last-updated-on {
+  .updated {
     font-style: italic;
   }
 </style>

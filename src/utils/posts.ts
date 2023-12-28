@@ -5,5 +5,5 @@ export const sortByDate = (posts: Array<any>) => {
 };
 
 export const calculateReadingTime = (content: string) => {
-  return ceil(content.length / 540);
+  return ceil(content.length / 1500);
 };

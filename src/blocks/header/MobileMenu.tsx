@@ -128,7 +128,8 @@ export const MobileMenu = () => {
             </Title>
             <HeaderLinks>
               <a href="/blog">Blog</a>
-              <a href="/projects">Projects</a>
+              <a href="/apps">Apps</a>
+              <a href="/web">Web</a>
             </HeaderLinks>
             <HeaderSearch />
           </MenuContent>

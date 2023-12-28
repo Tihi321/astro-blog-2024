@@ -7,28 +7,41 @@ const { prevUrl, nextUrl, totalPages, currentPage, paged } = Astro.props as {
   currentPage: number;
   totalPages: number;
 };
+
+console.log(totalPages);
 ---
 
-<nav>
-  <a class={`link ${!prevUrl && "disabled"}`} href={prevUrl}>Previous</a>
+<nav class="pagination">
   {
-    map(range(totalPages), (index) => {
-      const page = index + 1;
-      const url = page === 1 ? `/${paged}` : `/${paged}/${page}`;
-      return (
-        <a class={`link ${page === currentPage && "disabled"}`} href={url}>
-          {page}
+    totalPages > 1 && (
+      <div>
+        <a class={`link ${!prevUrl && "disabled"}`} href={prevUrl}>
+          Previous
         </a>
-      );
-    })
+        {map(range(totalPages), (index) => {
+          const page = index + 1;
+          const url = page === 1 ? `/${paged}` : `/${paged}/${page}`;
+          return (
+            <a class={`link ${page === currentPage && "disabled"}`} href={url}>
+              {page}
+            </a>
+          );
+        })}
+        <a class={`link ${!nextUrl && "disabled"}`} href={nextUrl}>
+          Next
+        </a>
+      </div>
+    )
   }
-  <a class={`link ${!nextUrl && "disabled"}`} href={nextUrl}>Next</a>
 </nav>
 
 <style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
   .link {
-    width: calc(100% - 2em);
-    max-width: 100%;
     margin: 0;
   }
 

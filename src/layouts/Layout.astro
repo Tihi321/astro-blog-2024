@@ -54,8 +54,8 @@ const { title, description } = Astro.props as { title?: string; description?: st
   </head>
   <body>
     <div class="loader" id="loader"></div>
-    <main>
-      <Header />
+    <Header />
+    <main class="container">
       <slot />
     </main>
     <Footer />
