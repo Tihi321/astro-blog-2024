@@ -1,0 +1,22 @@
+---
+const { src, title } = Astro.props as { title: string; src: string };
+---
+
+<div class="hero">
+  <img class="hero-image" src={src} alt={title} />
+</div>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+  .hero-image {
+    border: none;
+    width: 100%;
+    max-width: 250px;
+    filter: drop-shadow(2px 2px 4px var(--primary));
+  }
+</style>

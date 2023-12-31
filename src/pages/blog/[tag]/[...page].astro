@@ -5,6 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { sortByDate } from "../../../utils/posts";
 import Pagination from "../../../layouts/Pagination.astro";
 import { includes, filter } from "lodash-es";
+import Hero from "../../../layouts/Hero.astro";
 
 export async function getStaticPaths({ paginate }: any) {
   const allPosts = await getCollection("blog");
@@ -34,7 +35,7 @@ const paged = `${pagedArray[1]}/${pagedArray[2]}`;
 ---
 
 <Layout>
-  <img class="homer-writing" src="/images/homer-writing.png" alt="Writing" />
+  <Hero src="/images/pages/writing-pen.png" title="Writing" />
   <Posts posts={page?.data} />
   <Pagination
     prevUrl={page.url.prev}
@@ -44,11 +45,3 @@ const paged = `${pagedArray[1]}/${pagedArray[2]}`;
     paged={paged}
   />
 </Layout>
-
-<style>
-  .homer-writing {
-    border: none;
-    width: 100%;
-    filter: drop-shadow(2px 2px 4px var(--primary));
-  }
-</style>

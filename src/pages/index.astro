@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { filter, map, take } from "lodash-es";
 import { sortByDate } from "../utils/posts";
+import Hero from "../layouts/Hero.astro";
 
 const allPosts = await getCollection("blog");
 const featuredPosts = filter(allPosts, (post: any) => post.data?.featured);
@@ -12,7 +13,7 @@ const firstThreeItems = take(sorted, 3);
 ---
 
 <Layout>
-  <img class="homer-reading" src="/images/homer-reading.png" alt="Reading" />
+  <Hero src="/images/pages/reading-single.png" title="Reading" />
   <div class="footer">
     <div>
       I'm a passionate futurist with a deep interest in physics and science. A professional
@@ -67,11 +68,6 @@ const firstThreeItems = take(sorted, 3);
     &::after {
       margin-left: 0.5em;
     }
-  }
-  .homer-reading {
-    border: none;
-    width: 100%;
-    filter: drop-shadow(2px 2px 4px var(--primary));
   }
   .featured {
     display: flex;

@@ -1,16 +1,57 @@
 ---
+import Hero from "../layouts/Hero.astro";
 import Layout from "../layouts/Layout.astro";
+import Project from "../layouts/Project.astro";
 ---
 
 <Layout>
-  <img class="homer-writing" src="/images/homer-writing.png" alt="Writing" />
-   Some works
+  <Hero src="/images/pages/surfing.png" title="Programming" />
+  <ul class="projects">
+    <Project
+      title="Kobilica"
+      link="https://www.kobilica.hr/"
+      src="/images/projects/kobilica-web.png"
+    >
+      <p>
+        Kobilica is a web bussiness web site. Written in Typescript, Svelte and Threejs. Deployed on
+        Netlify.
+      </p>
+    </Project>
+    <Project
+      title="Puzzles"
+      link="https://puzzles.tihomir-selak.from.hr/"
+      src="/images/projects/puzzles-web.png"
+    >
+      <p>
+        Puzzles is a web portal with puzzle games. Written in Typescript, Svelte. Deployed on
+        Netlify.
+      </p>
+    </Project>
+  </ul>
 </Layout>
 
 <style>
-  .homer-writing {
-    border: none;
-    width: 100%;
-    filter: drop-shadow(2px 2px 4px var(--primary));
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 769px) {
+    .projects {
+      gap: 16px;
+    }
+
+    .title {
+      font-size: 32px;
+    }
+
+    .post {
+      width: 49%;
+    }
   }
 </style>

@@ -1,16 +1,48 @@
 ---
+import Hero from "../layouts/Hero.astro";
 import Layout from "../layouts/Layout.astro";
+import Project from "../layouts/Project.astro";
 ---
 
 <Layout>
-  <img class="homer-writing" src="/images/homer-writing.png" alt="Writing" />
-   Some works
+  <Hero src="/images/pages/surfing-two.png" title="Programming" />
+  <ul class="projects">
+    <Project
+      title="Shortcuts"
+      link="https://github.com/Tihi321/shortcuts"
+      src="/images/projects/shortcuts-app.png"
+    >
+      <p>
+        Introducing Shortcuts: Your Ultimate Windows Executable Launcher Experience the ultimate
+        convenience with Shortcuts, the must-have app for effortlessly launching your Windows
+        executables directly from your disk.
+      </p>
+    </Project>
+  </ul>
 </Layout>
 
 <style>
-  .homer-writing {
-    border: none;
-    width: 100%;
-    filter: drop-shadow(2px 2px 4px var(--primary));
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 769px) {
+    .projects {
+      gap: 16px;
+    }
+
+    .title {
+      font-size: 32px;
+    }
+
+    .post {
+      width: 49%;
+    }
   }
 </style>
