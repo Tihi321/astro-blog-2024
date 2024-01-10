@@ -1,11 +1,9 @@
 ---
-import Hero from "../layouts/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import Project from "../layouts/Project.astro";
 ---
 
 <Layout>
-  <Hero src="/images/pages/surfing-two.png" title="Programming" />
   <ul class="projects">
     <Project
       title="Shortcuts"
@@ -18,15 +16,25 @@ import Project from "../layouts/Project.astro";
         executables directly from your disk.
       </p>
     </Project>
+    <Project
+      title="Quizess"
+      link="https://github.com/Tihi321/quizess"
+      src="/images/projects/quizess-plugin.png"
+    >
+      <p>
+        This is Gutenberg Wordpress plugin, that allows you to create quizess, register players and
+        keep records on player scores. It is an excellent solution for creating quiz games in
+        Wordpress.
+      </p>
+    </Project>
   </ul>
 </Layout>
 
 <style>
   .projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
     list-style-type: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 8px;
     margin: 0;
     padding: 0;

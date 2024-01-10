@@ -25,26 +25,33 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
 <article class="post">
   <header class="hero">
     <h1 class="title">{title}</h1>
-    {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+    {
+      heroImage && (
+        <div class="hero-image">
+          <img width={1020} height={510} src={heroImage} alt="" />
+          <button
+            title="Enable reading mode (Ctrl + r)"
+            type="button"
+            class="reading-mode"
+            id="reading-mode"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="bullet"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+        </div>
+      )
+    }
     <div class="info">
       <div class="reading-time">{readingTime} min read</div>
-      <button
-        title="Enable reading mode (Ctrl + r)"
-        type="button"
-        class="reading-mode"
-        id="reading-mode"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="bullet"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg></button
-      >
       <div class="date">
         <FormattedDate date={pubDate} />
         {
@@ -66,23 +73,34 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
 
     img {
       display: block;
-      margin: 0 auto;
+      width: 100%;
       border-radius: 12px;
       box-shadow: var(--box-shadow);
     }
-  }
 
-  .reading-mode {
-    cursor: pointer;
-    background: none;
-    border: none;
-    .bullet {
-      width: 24px;
-      height: 24px;
-      fill: none;
-      stroke: var(--primary);
+    .hero-image {
+      position: relative;
+    }
+
+    .reading-mode {
+      border-radius: 12px 0 12px 0;
+      padding: 8px;
+      cursor: pointer;
+      background: var(--focus);
+      border: 1px solid var(--primary);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      opacity: 0.8;
+      .bullet {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: var(--primary);
+      }
     }
   }
+
   .title {
     margin: 12px 0;
     text-align: center;

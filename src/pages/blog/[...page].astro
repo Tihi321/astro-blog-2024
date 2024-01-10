@@ -18,7 +18,6 @@ const { page } = Astro.props as { page: any };
 ---
 
 <Layout>
-  <Hero src="/images/pages/writing-pen.png" title="Writing" />
   <Posts posts={page?.data} />
   <Pagination
     prevUrl={page.url.prev}

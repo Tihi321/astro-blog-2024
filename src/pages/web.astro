@@ -1,11 +1,9 @@
 ---
-import Hero from "../layouts/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import Project from "../layouts/Project.astro";
 ---
 
 <Layout>
-  <Hero src="/images/pages/surfing.png" title="Programming" />
   <ul class="projects">
     <Project
       title="Kobilica"
@@ -32,10 +30,9 @@ import Project from "../layouts/Project.astro";
 
 <style>
   .projects {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
     list-style-type: none;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 8px;
     margin: 0;
     padding: 0;
