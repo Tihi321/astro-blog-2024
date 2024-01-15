@@ -1,11 +1,5 @@
 ---
-import { getCollection } from "astro:content";
-import { get, uniq, flatMap, map } from "lodash-es";
-
 const today = new Date();
-
-const allPosts = await getCollection("blog");
-const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categories"], [])));
 ---
 
 <script>
@@ -86,9 +80,6 @@ const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categori
         </svg>
       </a>
     </div>
-    <div class="categories">
-      {map(categories, (category) => <a href={`/blog/${category}`}>#{category}</a>)}
-    </div>
     <div class="copy">
       &copy; {today.getFullYear()} Tihomir Selak. All rights reserved.
     </div>
@@ -100,17 +91,6 @@ const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categori
     padding: 8px 0;
     display: flex;
     font-size: 14px;
-  }
-  .categories {
-    padding: 0 8px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 2px;
-
-    a {
-      line-height: 1;
-    }
   }
   .socials {
     display: flex;
