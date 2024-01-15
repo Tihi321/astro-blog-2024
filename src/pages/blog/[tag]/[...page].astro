@@ -5,7 +5,7 @@ import Layout from "../../../layouts/Layout.astro";
 import { sortByDate } from "../../../utils/posts";
 import Pagination from "../../../layouts/Pagination.astro";
 import { includes, filter } from "lodash-es";
-import Hero from "../../../layouts/Hero.astro";
+import Categories from "../../../components/layout/Categories.astro";
 
 export async function getStaticPaths({ paginate }: any) {
   const allPosts = await getCollection("blog");
@@ -32,9 +32,11 @@ export async function getStaticPaths({ paginate }: any) {
 const { page } = Astro.props as { page: any };
 const pagedArray = page.url.current.split("/");
 const paged = `${pagedArray[1]}/${pagedArray[2]}`;
+const category = page.url.current.split("/")[2];
 ---
 
 <Layout>
+  <Categories category={category} />
   <Posts posts={page?.data} />
   <Pagination
     prevUrl={page.url.prev}

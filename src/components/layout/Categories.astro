@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import { get, uniq, flatMap, map } from "lodash-es";
+
+const { category } = Astro.props as { category?: string };
+
+const allPosts = await getCollection("blog");
+const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categories"], [])));
+
+console.log(category);
+---
+
+<div class="categories">
+  <a class={`category ${category === "all" ? "active" : ""}`} href={`/blog`}> All</a>
+
+  {
+    map(categories, (categoryItem) => (
+      <a
+        class={`category ${categoryItem === category ? "active" : ""}`}
+        href={`/blog/${categoryItem}`}
+      >
+        {categoryItem}
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .category {
+    color: var(--text-color);
+    text-transform: capitalize;
+
+    &:hover {
+      color: var(--secondary);
+    }
+
+    &.active {
+      font-weight: bolder;
+    }
+  }
+</style>
