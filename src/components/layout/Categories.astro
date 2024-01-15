@@ -6,8 +6,6 @@ const { category } = Astro.props as { category?: string };
 
 const allPosts = await getCollection("blog");
 const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categories"], [])));
-
-console.log(category);
 ---
 
 <div class="categories">
