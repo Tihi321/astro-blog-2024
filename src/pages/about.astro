@@ -1,0 +1,99 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "../layouts/Layout.astro";
+import { filter, map, take, get, uniq, flatMap } from "lodash-es";
+import { sortByDate } from "../utils/posts";
+import Hero from "../layouts/Hero.astro";
+
+const allPosts = await getCollection("blog");
+const featuredPosts = filter(allPosts, (post: any) => post.data?.featured);
+const sorted = sortByDate(featuredPosts);
+
+const firstThreeItems = take(sorted, 3);
+
+const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categories"], [])));
+---
+
+<Layout>
+  <div class="hero">
+    <Hero src="/images/pages/reading-single.png" title="Reading" />
+    <div class="content">
+      <div>
+        I'm a passionate futurist with a deep interest in physics and science. A professional
+        programmer and coder specializing in innovative applications. My fascination with artificial
+        intelligence extends to my hobbies, where I constantly explore AI in various forms and
+        engage in philosophical discussions. My enthusiasm for technology and its potential impact
+        on the future shapes both my career and personal pursuits.
+      </div>
+      <h3 class="featured-title">Featured</h3>
+      <div class="featured">
+        {map(firstThreeItems, (post: any) => <a href={`/post/${post.slug}`}>{post.data.title}</a>)}
+      </div>
+      <div class="categories">
+        {
+          map(categories, (category) => (
+            <a class="category" href={`/blog/${category}`}>
+              #{category}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .hero {
+    margin: auto;
+  }
+  .content {
+    text-align: center;
+    padding: 16px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: space-between;
+    margin-top: auto;
+  }
+
+  .title {
+    text-align: center;
+    margin: 8px 0;
+    font-weight: bold;
+  }
+
+  .featured-title {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 8px 0;
+    font-weight: bold;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid currentColor;
+    }
+
+    &::before {
+      margin-right: 0.5em;
+    }
+
+    &::after {
+      margin-left: 0.5em;
+    }
+  }
+  .featured {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .categories {
+    margin: 12px 0;
+  }
+</style>
