@@ -57,12 +57,10 @@ export const Story = () => {
   let audioElement: any;
 
   onMount(() => {
-    // Play the audio when the component mounts
     audioElement.play();
   });
 
   onCleanup(() => {
-    // Pause the audio when the component unmounts
     audioElement.pause();
   });
 
@@ -114,13 +112,12 @@ export const TurtleStory = () => {
   let audioElement: any;
 
   onMount(() => {
-    // Play the audio when the component mounts
     audioElement.play();
     audioElement.volume = 0.01;
+    audioElement.loop = true;
   });
 
   onCleanup(() => {
-    // Pause the audio when the component unmounts
     audioElement.pause();
   });
 
