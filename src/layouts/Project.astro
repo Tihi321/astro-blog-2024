@@ -3,7 +3,7 @@ const { link, title, src } = Astro.props as any;
 ---
 
 <li class="project">
-  <a class="project-link" href={link}>
+  <a class="post-link" href={link}>
     <div class="hero-image" style={`background-image: url(${src});`} title={title}></div>
     <h4 class="title">{title}</h4>
   </a>
@@ -22,16 +22,6 @@ const { link, title, src } = Astro.props as any;
       height: 250px;
       background-size: cover;
       background-position: center;
-    }
-
-    .project-link {
-      display: block;
-
-      &:hover {
-        img {
-          box-shadow: var(--box-shadow);
-        }
-      }
     }
 
     .title {

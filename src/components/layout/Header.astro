@@ -17,17 +17,8 @@ import { MobileMenu } from "../../blocks/header/MobileMenu";
 <div class="center-container">
   <header class="header" id="header">
     <a href="/" title={SITE_TITLE} class="logo">
-      <svg class="logo-image" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 130 126"
-        ><path
-          class="logo-background-color"
-          d="M0 5a5 5 0 015-5h120a5 5 0 015 5v116a5 5 0 01-5 5H5a5 5 0 01-5-5V5z"
-          fill="rgba(35, 39, 57, 1)"></path>
-        <path
-          class="logo-text-color"
-          d="M49.532 115h11.48V69.326H76.92V59.24H33.624v10.086h15.908V115zM101.021 115.738c10.906 0 19.024-5.658 19.024-15.99 0-9.594-5.494-13.858-15.252-18.04l-2.87-1.23c-4.92-2.132-7.052-3.526-7.052-6.97 0-2.788 2.132-4.92 5.494-4.92 3.28 0 5.412 1.394 7.38 4.92l8.938-5.74c-3.772-6.642-9.02-9.184-16.318-9.184-10.25 0-16.81 6.56-16.81 15.17 0 9.348 5.494 13.776 13.776 17.302l2.87 1.23c5.248 2.296 8.364 3.69 8.364 7.626 0 3.28-3.034 5.658-7.79 5.658-5.658 0-8.856-2.952-11.316-6.97l-9.348 5.412c3.362 6.642 10.25 11.726 20.91 11.726z"
-          fill="#FFFFFF"></path>
-      </svg></a
-    >
+      <div class="logo-element">TS</div>
+    </a>
     <nav class="menu">
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/apps">Apps</HeaderLink>
@@ -39,55 +30,53 @@ import { MobileMenu } from "../../blocks/header/MobileMenu";
       <MobileMenu client:only />
     </nav>
   </header>
-</div>
 
-<style>
-  .header {
-    margin: 0;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  .mobile-menu {
-    display: block;
-  }
-  .menu {
-    display: none;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .logo {
-    width: 56px;
-    display: flex;
-  }
-
-  .logo-background-color {
-    fill: var(--primary);
-  }
-
-  .logo-text-color {
-    fill: var(--focus);
-  }
-  @media (min-width: 769px) {
-    .menu {
-      display: flex;
-    }
-    .mobile-menu {
-      display: none;
-    }
-
+  <style>
     .header {
-      padding: 20px 0;
+      margin: 0;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .mobile-menu {
+      display: block;
+    }
+    .menu {
+      display: none;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .logo {
-      width: 80px;
+      background-color: var(--primary);
+      color: var(--focus);
+      font-weight: bold;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      width: 40px;
+      height: 35px;
+      font-size: 24px;
+      line-height: 0.7;
+      padding-right: 1px;
+      text-decoration: none;
     }
-  }
-</style>
+    @media (min-width: 769px) {
+      .menu {
+        display: flex;
+      }
+      .mobile-menu {
+        display: none;
+      }
+
+      .header {
+        padding: 20px 0;
+      }
+    }
+  </style>
+</div>

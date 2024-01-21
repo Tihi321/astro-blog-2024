@@ -4,6 +4,12 @@ import Project from "../layouts/Project.astro";
 ---
 
 <Layout>
+  <h3 class="featured-title">Applications</h3>
+  <div class="info">
+    For more of profeesional experience and to check projects I worked on visit <a
+      href="https://www.linkedin.com/in/selaktihomir/">linkedin</a
+    >.
+  </div>
   <ul class="projects">
     <Project
       title="Shortcuts"
@@ -31,6 +37,12 @@ import Project from "../layouts/Project.astro";
 </Layout>
 
 <style>
+  .info {
+    text-align: center;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 24px;
+  }
   .projects {
     display: grid;
     list-style-type: none;

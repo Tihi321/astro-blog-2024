@@ -175,3 +175,41 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--tertiary));
 }
+
+.post-link {
+	display: block;
+
+	.hero-image {
+		border: 4px solid var(--primary);
+	}
+
+
+	&:hover {
+		.hero-image {
+			box-shadow: var(--box-shadow);
+		}
+	}
+}
+
+.featured-title {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin: 8px 0;
+	font-weight: bold;
+
+	&::before,
+	&::after {
+		content: "";
+		flex: 1;
+		border-bottom: 1px solid currentColor;
+	}
+
+	&::before {
+		margin-right: 0.5em;
+	}
+
+	&::after {
+		margin-left: 0.5em;
+	}
+}

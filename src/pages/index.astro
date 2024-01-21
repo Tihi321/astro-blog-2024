@@ -19,7 +19,7 @@ const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categori
   <div class="hero">
     <Hero src="/images/pages/reading-single.png" title="Reading" />
     <div class="content">
-      <div>
+      <div class="description">
         I'm a passionate futurist with a deep interest in physics and science. A professional
         programmer and coder specializing in innovative applications. My fascination with artificial
         intelligence extends to my hobbies, where I constantly explore AI in various forms and
@@ -64,26 +64,12 @@ const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categori
     font-weight: bold;
   }
 
-  .featured-title {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 8px 0;
-    font-weight: bold;
+  .description {
+    font-size: 20px;
+    line-height: 1.3;
 
-    &::before,
-    &::after {
-      content: "";
-      flex: 1;
-      border-bottom: 1px solid currentColor;
-    }
-
-    &::before {
-      margin-right: 0.5em;
-    }
-
-    &::after {
-      margin-left: 0.5em;
+    @media screen and (min-width: 768px) {
+      font-size: 22px;
     }
   }
   .featured {

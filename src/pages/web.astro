@@ -4,31 +4,74 @@ import Project from "../layouts/Project.astro";
 ---
 
 <Layout>
+  <h3 class="featured-title">Websites</h3>
+  <div class="info">
+    For more of profeesional experience and to check projects I worked on visit <a
+      href="https://www.linkedin.com/in/selaktihomir/">linkedin</a
+    >.
+  </div>
   <ul class="projects">
     <Project
-      title="Kobilica"
-      link="https://www.kobilica.hr/"
+      title="Kobilica Web"
+      link="https://kobilica.hr"
       src="/images/projects/kobilica-web.png"
     >
+      <p>Kobilica is a agency website. Written in Typescript, using Astro SSG framework.</p>
+    </Project>
+    <Project
+      title="Kobilica Times"
+      link="https://times.kobilica.hr"
+      src="/images/projects/kobilica-times.png"
+    >
       <p>
-        Kobilica is a web bussiness web site. Written in Typescript, Svelte and Threejs. Deployed on
-        Netlify.
+        Kobilica Times is A.I. fake-news satirical web portal. Written in Typescript, using Astro
+        SSG framework and SolidJS.
       </p>
     </Project>
     <Project
+      title="Digital Solutions"
+      link="https://kb-svelte-threejs-2021.netlify.app"
+      src="/images/projects/digital-solutions-web.png"
+    >
+      <p>Digital Solutions is a agency website. Written in Typescript, Svelte and Threejs.</p>
+    </Project>
+    <Project
       title="Puzzles"
-      link="https://puzzles.tihomir-selak.from.hr/"
+      link="https://puzzles.tihomir-selak.from.hr"
       src="/images/projects/puzzles-web.png"
     >
+      <p>Puzzles is a web portal with puzzle games. Written in Typescript, Svelte.</p>
+    </Project>
+    <Project
+      title="Gatsby Blog"
+      link="https://ts-gatsby-blog-2021.netlify.app"
+      src="/images/projects/gatsby-blog.png"
+    >
       <p>
-        Puzzles is a web portal with puzzle games. Written in Typescript, Svelte. Deployed on
-        Netlify.
+        Legacy blog written in Typescript using Gatsby SSG framework and React. MDX is used for
+        content
+      </p>
+    </Project>
+    <Project
+      title="Solid Blog"
+      link="https://ts-solid-start-blog-2024.netlify.app"
+      src="/images/projects/solid-blog.png"
+    >
+      <p>
+        Blog written in Typescript using Solid Start SSG framework and SolidJS. MDX is used for
+        content
       </p>
     </Project>
   </ul>
 </Layout>
 
 <style>
+  .info {
+    text-align: center;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--primary);
+    margin-bottom: 24px;
+  }
   .projects {
     display: grid;
     list-style-type: none;
