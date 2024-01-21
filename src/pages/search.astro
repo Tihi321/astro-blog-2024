@@ -2,10 +2,12 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { SearchList } from "../blocks/posts/SearchList.tsx";
+import { sortByDate } from "../utils/posts";
 
 const allPosts = await getCollection("blog");
+const sorted = sortByDate(allPosts);
 ---
 
 <Layout>
-  <SearchList posts={allPosts} client:only />
+  <SearchList posts={sorted} client:only />
 </Layout>
