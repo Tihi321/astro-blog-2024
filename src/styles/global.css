@@ -146,11 +146,9 @@ img {
 }
 
 p {
-	display: flex;
 	img {
 		margin: 24px auto;
 		width: 100%;
-		max-width: 700px;
 	}
 }
 code {
