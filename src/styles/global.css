@@ -202,13 +202,14 @@ hr {
 	}
 
 	.title {
-		margin: 24px 0;
-		font-size: 28px;
+		margin: 12px 0;
+		font-size: 22px;
 
 		@media screen and (min-width: 769px) {
-			font-size: 34px;
+			font-size: 28px;
 		}
 	}
+	
 	.info {
 		margin: 0;
 		display: flex;
