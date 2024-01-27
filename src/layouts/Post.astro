@@ -45,7 +45,7 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
     <h1 class="title">{title}</h1>
     {
       heroImage && (
-        <div class="hero-image">
+        <div class="post-hero-image">
           <img src={heroImage} alt="" />
           <button
             title="Enable reading mode (Ctrl + r)"
@@ -131,7 +131,7 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
       box-shadow: var(--box-shadow);
     }
 
-    .hero-image {
+    .post-hero-image {
       position: relative;
 
       img {

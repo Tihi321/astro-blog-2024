@@ -13,36 +13,6 @@ const Posts = styled("ul")`
   list-style-type: none;
 `;
 
-const Post = styled("li")`
-  width: 100%;
-  margin-bottom: 12px;
-  text-decoration: none;
-  transition: 0.2s ease;
-`;
-
-const PostLink = styled("a")`
-  display: block;
-
-  &:hover {
-    img {
-      box-shadow: var(--box-shadow);
-    }
-  }
-`;
-
-const Info = styled("div")`
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-`;
-
-const Categories = styled("div")`
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-`;
-
 const Input = styled(SearchInput)`
   width: 100%;
   padding: 4px 8px;
@@ -93,24 +63,28 @@ export const SearchList = ({ posts }: SearchProps) => {
       />
       <Posts>
         {map(filteredPosts(), (post) => (
-          <Post>
-            <PostLink href={`/post/${get(post, ["slug"])}`}>
-              <img src={get(post, ["data", "heroImage"])} />
+          <li class="post">
+            <a class="post-link" href={`/post/${get(post, ["slug"])}`}>
+              <div
+                class="hero-image"
+                style={`background-image: url(${get(post, ["data", "heroImage"])});`}
+                title={get(post, ["data", "title"])}
+              />
               <h4>{get(post, ["data", "title"])}</h4>
-            </PostLink>
-            <Info>
-              <Categories>
+            </a>
+            <div class="info">
+              <div class="categories">
                 {map(get(post, ["data", "categories"], []), (category) => (
                   <a href={`/blog/${category}/`}>{category}</a>
                 ))}
-              </Categories>
+              </div>
               <div>
                 <span class="reading-time">{calculateReadingTime(get(post, ["body"]))} min</span>
                 {getFormattedDate(get(post, ["data", "pubDate"]))}
               </div>
-            </Info>
+            </div>
             {get(post, ["data", "description"])}
-          </Post>
+          </li>
         ))}
       </Posts>
     </Container>

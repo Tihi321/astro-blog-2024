@@ -11,13 +11,13 @@ featured: true
 
 Welcome to the dynamic landscape of the digital age, where Artificial Intelligence (AI) transcends science fiction to become a tangible, integral part of our everyday existence. This blog post delves deep into this transformative journey, spotlighting the role of AI assistants in revolutionizing our cognitive tasks. Picture an assistant that not only boosts productivity but also aids in intricate decision-making and orchestrates our daily activities with exceptional proficiency. We're about to explore how these advanced technologies enhance our cognitive prowess and transform our work patterns, providing insights and solutions once considered beyond reach.
 
-### My Journey with AI
+## My Journey with AI
 
 My personal journey with AI began as a hobby last year, exploring local Large Language Models (LLMs) before the advent of ChatGPT and the OpenAI API. Initially, these tools didn't quite hit the mark for me. My focus then shifted to image processing AI tools like Stable Diffusion, which seemed more advanced than the LLMs at the time. The quality of the images and the existence of remarkable commercial tools like Midjourney fueled my interest. However, the game changed with the release of ChatGPT by OpenAI. This accessible platform, especially with the leap from GPT-3.5 to GPT-4, brought LLMs into the mainstream, proving their practical utility. As I experimented with ChatGPT, I encountered limitations but found that courses on Prompt Engineering from Coursera significantly enhanced its effectiveness. The evolution didn't stop there; the introduction of chat functionality in GitHub Copilot was a turning point, making it an invaluable tool for coding. By learning and applying new frameworks and languages simultaneously, my workflow accelerated dramatically. The traditional approach of absorbing crash courses and documentation before coding shifted to an immediate, hands-on process, although it naturally involved a fair amount of refining and refactoring.
 
 ![blog placeholder](/content/images/assets/code-monkey.jpeg)
 
-### Evolving with AI: From Code Solutions to Architectural Focus
+## Evolving with AI: From Code Solutions to Architectural Focus
 
 As my journey with AI and programming tools evolved, the role of GitHub Copilot emerged as a game-changer in my development process. Initially, my interactions with ChatGPT revolved around dialogues to unravel coding solutions. This approach was fruitful, but the advent of GitHub Copilot, especially its seamless integration with the Visual Studio Code (VS Code) IDE, marked a significant shift in my workflow. GitHub Copilot, leveraging the power of GPT-4 and free from usage constraints, is a tool specifically crafted for coding. It offers an accessible and efficient platform for developers, streamlining the coding process.
 
@@ -27,7 +27,7 @@ This newfound flexibility led to significant changes in my professional and pers
 
 On a personal note, this approach also influenced how I developed this blog. I initially started with Solid start, but given that it was still in beta, I eventually switched to using the Astro framework. This decision was made easier by the confidence that, with AI assistance, I could effectively navigate and utilize a new frameworks despite having no previous experience with it. The journey with AI in programming has thus transitioned from finding specific code snippets to empowering a broader, more strategic perspective in software development.
 
-### Conclusion: Embracing AI for a Boundless Future in Software Development
+## Conclusion: Embracing AI for a Boundless Future in Software Development
 
 As we stand at the crossroads of technological innovation, my journey with AI tools like ChatGPT and GitHub Copilot exemplifies a significant shift in the paradigm of software development. This evolution from seeking specific coding solutions to focusing on overarching architectural designs signifies a new era where the boundaries of innovation are continually expanding.
 
