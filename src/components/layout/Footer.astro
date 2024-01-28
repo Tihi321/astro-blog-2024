@@ -81,7 +81,7 @@ const today = new Date();
       </a>
     </div>
     <div class="copy">
-      &copy; {today.getFullYear()} Tihomir Selak. All rights reserved.
+      &copy; {today.getFullYear()} Tihomir Selak. <span>All rights reserved.</span>
     </div>
   </footer>
 </div>
@@ -91,6 +91,7 @@ const today = new Date();
     padding: 8px 0;
     display: flex;
     font-size: 14px;
+    gap: 34px;
   }
   .socials {
     display: flex;
@@ -99,5 +100,8 @@ const today = new Date();
   }
   .copy {
     margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 </style>
