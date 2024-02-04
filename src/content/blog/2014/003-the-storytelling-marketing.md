@@ -1,6 +1,6 @@
 ---
 title: "When Storytelling Meets Marketing: The Art of Subtle Product Placement in Blogs"
-description: EToday, we're embarking on a journey not to the stars, but through the whimsical world of storytelling and clever marketing. Have you ever read a story that seamlessly weaves a product into its narrative fabric?
+description: Today, we're embarking on a journey not to the stars, but through the whimsical world of storytelling and clever marketing. Have you ever read a story that seamlessly weaves a product into its narrative fabric?
 pubDate: Jan 25 2024
 heroImage: /content/images/hero/space-panda.png
 categories:
@@ -17,7 +17,7 @@ Once upon a time, in a not-so-distant blog post, there lived an astronaut named 
 
 On Day 3, as Adam ran simulations at NASA, his thoughts drifted to his family. Amidst the high-tech hustle, he sought solace in something simple yet profound - a family photo wrapped in [Duck Tape Panda](https://star.kobilica.hr/post/2014/005-mars-family/#day-3-the-echoes-of-doubt). Yes, dear readers, here lies our unobtrusive product: the [Duck Tape Panda](https://star.kobilica.hr/post/2014/005-mars-family/#day-3-the-echoes-of-doubt).
 
-![blog placeholder](/content/images/assets/subtle-touch.png)
+![Subtle touch](/content/images/assets/subtle-touch.png)
 
 ## The Magic Touch of Subtlety:
 
