@@ -104,7 +104,7 @@ Nintendo, a household name in the gaming industry, has had its share of ups and 
 
 Nintendo entered the U.S. market in 1985 and quickly dominated the video game world for the rest of the eighties and much of the nineties. The company's innovative hardware and engaging games filled the void left by Atari's collapse, demonstrating that the video game industry was not a short-lived fad but a sustainable and profitable market.
 
-Same company in 2013, after wii disaster, and financial hardship for several years before Nintendo Switch, slashed wages of management to ratain employees, who continued to make successful games
+Same company in 2013, after Wii U disaster, and financial hardship for several years before release of Nintendo Switch, slashed wages of management to retain employees, who continued to make successful games.
 
 ### Lessons for the Gaming Industry
 
