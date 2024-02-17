@@ -25,13 +25,15 @@ type TTextInputProps = {
   onInput?: (value: any) => void;
   onSubmit?: (value: any) => void;
   placeholder?: string;
-  value: string;
+  type?: string;
+  value: string | number;
 };
 
 export const SearchInput = ({
   onInput,
   onSubmit,
   placeholder,
+  type = "text",
   value,
   ...rest
 }: TTextInputProps) => {
@@ -47,6 +49,7 @@ export const SearchInput = ({
           onSubmit(e.currentTarget.value);
         }
       }}
+      type={type}
       placeholder={placeholder}
       value={value}
       {...rest}

@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { NinjaPrompts } from "../blocks/prompts/NinjaPrompts";
+---
+
+<Layout>
+  <div class="hero"><NinjaPrompts client:only /></div>
+</Layout>
+
+<style>
+  .hero {
+    display: flex;
+    margin: 20px 0;
+  }
+</style>
