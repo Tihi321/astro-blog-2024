@@ -1,6 +1,5 @@
 import { createSignal } from "solid-js";
 import { SearchInput } from "../inputs/SearchInput";
-import { map, range } from "lodash-es";
 import { styled } from "solid-styled-components";
 
 const Container = styled("div")`
@@ -9,7 +8,9 @@ const Container = styled("div")`
 `;
 
 const Inputs = styled("div")`
+  margin-top: 20px;
   display: flex;
+  justify-content: space-between;
   gap: 8px;
   flex-wrap: wrap;
 `;
@@ -24,46 +25,38 @@ const Input = styled(SearchInput)`
   padding: 4px 8px;
 `;
 
+const Generate = styled("button")`
+  padding: 4px 8px;
+  min-width: 200px;
+  flex: 1;
+`;
+
 const PromptContainer = styled("div")`
   width: 100%;
   margin-top: 20px;
   border: 1px solid var(--primary);
   border-radius: 6px;
   padding: 20px;
-  height: 300px;
+  height: 100px;
   overflow: auto;
 `;
 
-export const NinjaPrompts = () => {
+export const Parts = () => {
   const [title, setTitle] = createSignal<string>("");
-  const [numberOfWorkds, setNumberOfWords] = createSignal<number>(500);
-  const [bullets, setBullets] = createSignal<number>(4);
-
-  const getPrompt = () => {
-    const titleValue = title();
-    const numberOfWordsValue = numberOfWorkds();
-    const bulletsValue = bullets();
-    const prompt = `I want you to execute the following steps. Step 1 - generate ${bulletsValue} popular questions about "${titleValue}".`;
-    const setpsArray = map(
-      range(bulletsValue),
-      (index) =>
-        `Step ${index + 2} - take the ${
-          index + 2 - 1
-        }. question from the list from Step 1 and write a ${numberOfWordsValue} word article about it.`
-    );
-    return prompt + "  " + setpsArray.join(" ");
-  };
+  const [numberOfWorkds, setNumberOfWords] = createSignal<number>(2000);
+  const [parts, setParts] = createSignal<number>(3);
+  const [activePart, setActivePart] = createSignal<number>(1);
 
   return (
     <Container>
-      <Title>Ninja Prompting</Title>
+      <Title>Parts</Title>
       <Inputs>
         <Input placeholder="Title" value={title()} onInput={(value) => setTitle(value)} />
         <Input
-          placeholder="Bullet Points"
+          placeholder="Parts"
           type="number"
-          value={bullets()}
-          onInput={(value) => setBullets(value)}
+          value={parts()}
+          onInput={(value) => setParts(value)}
         />
         <Input
           placeholder="Number of Words"
@@ -72,7 +65,12 @@ export const NinjaPrompts = () => {
           onInput={(value) => setNumberOfWords(value)}
         />
       </Inputs>
-      <PromptContainer>{getPrompt()}</PromptContainer>
+      <Inputs>
+        <Generate onClick={() => setActivePart(activePart() - 1)}>Prev</Generate>
+        <Generate onClick={() => setActivePart(activePart() + 1)}>Next</Generate>
+      </Inputs>
+
+      <PromptContainer>{`Use markdown formatting, bolded words, lists and tables to write Part ${activePart()} of ${parts()} of ${numberOfWorkds()} words essay about "${title()}"`}</PromptContainer>
     </Container>
   );
 };

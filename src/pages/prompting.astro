@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { NinjaPrompts } from "../blocks/prompts/NinjaPrompts";
+import { Sections } from "../blocks/prompts/Sections";
+import { Parts } from "../blocks/prompts/Parts";
+---
+
+<Layout>
+  <div class="hero"><NinjaPrompts client:only /><Sections client:only /><Parts client:only /></div>
+</Layout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+  }
+</style>
