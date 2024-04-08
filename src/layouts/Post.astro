@@ -8,6 +8,33 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
 ---
 
 <script>
+  function isEdge() {
+    return window.navigator.userAgent.indexOf("Edg") !== -1;
+  }
+
+  const getVoice = (voiceURI: string) => {
+    const voices = speechSynthesis.getVoices();
+    const voice = voices.find((voice) => voice.voiceURI.includes(voiceURI));
+
+    return voice;
+  };
+
+  const speak = (content: string, voice: any) => {
+    content.split("\n").forEach((text) => {
+      const ssu = new SpeechSynthesisUtterance(text);
+      ssu.lang = lang;
+      ssu.voice = voice;
+      speechSynthesis.speak(ssu);
+    });
+  };
+
+  const ava = "Microsoft Ava Online (Natural) - English (United States)";
+  const andrew = "Microsoft Andrew Online (Natural) - English (United States)";
+  const emma = "Microsoft Emma Online (Natural) - English (United States)";
+  const brian = "Microsoft Brian Online (Natural) - English (United States)";
+
+  const lang = "en-US";
+
   document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
       if (e.ctrlKey && e.key === "r") {
@@ -17,6 +44,7 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
     const readingModeButton = document.querySelector("#reading-mode");
     const shareFacebookBtn = document.querySelector("#facebook-share-btn");
     const shareLinkedinBtn = document.querySelector("#linkedin-share-btn");
+    const speakButton = document.querySelector("#speak-btn");
 
     readingModeButton?.addEventListener("click", () => {
       document.dispatchEvent(new CustomEvent("toggle-reading-mode"));
@@ -37,6 +65,15 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
         "_blank"
       );
     });
+
+    if (isEdge()) {
+      speakButton?.classList.add("shown");
+      speakButton?.addEventListener("click", () => {
+        speechSynthesis.cancel();
+        const content = document.querySelector("#content")?.textContent as string;
+        speak(content, getVoice(emma));
+      });
+    }
   });
 </script>
 
@@ -114,10 +151,21 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
             ></path></svg
           >
         </button>
+
+        <!-- Speaker Button -->
+        <button id="speak-btn" title="Speak" role="button" class="speak-btn">
+          <svg class="speak-icon" viewBox="0 0 20 20" class="c1178"
+            ><path
+              d="M7.5 4c.18 0 .34.1.43.25l.04.08 4 11a.5.5 0 01-.9.42l-.04-.08L9.7 12H5.3l-1.33 3.67a.5.5 0 01-.96-.25l.02-.1 4-11A.5.5 0 017.5 4zm0 1.96L5.67 11h3.66L7.5 5.96zm5.24-3.9l.39.22a9.5 9.5 0 014.84 7.36l.03.31a.5.5 0 01-1 .1l-.03-.32a8.5 8.5 0 00-4.33-6.58l-.38-.21a.5.5 0 01.48-.88zm-1.17 2.68a.5.5 0 01.6-.2l.09.03.12.08a6.5 6.5 0 013.02 4.23l.05.27.04.27a.5.5 0 01-.96.25l-.02-.09-.05-.26a5.5 5.5 0 00-2.37-3.67l-.22-.15-.13-.07a.5.5 0 01-.17-.69z"
+              fill-rule="nonzero"></path></svg
+          >
+        </button>
       </div>
     </div>
   </header>
-  <slot />
+  <div class="content" id="content">
+    <slot />
+  </div>
 </article>
 
 <style>
@@ -162,6 +210,24 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
     .share-btn-linkedin {
       stroke: var(--primary);
       fill: var(--primary);
+    }
+
+    .speak-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      height: 34px;
+      width: 34px;
+      display: none;
+
+      &.shown {
+        display: block;
+      }
+    }
+
+    .speak-icon {
+      width: 100%;
+      display: flex;
     }
 
     .reading-mode {
