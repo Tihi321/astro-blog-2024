@@ -19,6 +19,13 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
     return voice;
   };
 
+  const ava = "Microsoft Ava Online (Natural) - English (United States)";
+  const andrew = "Microsoft Andrew Online (Natural) - English (United States)";
+  const emma = "Microsoft Emma Online (Natural) - English (United States)";
+  const brian = "Microsoft Brian Online (Natural) - English (United States)";
+
+  const lang = "en-US";
+
   const speak = (content: string, voice: any) => {
     content.split("\n").forEach((text) => {
       const ssu = new SpeechSynthesisUtterance(text);
@@ -27,13 +34,6 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
       speechSynthesis.speak(ssu);
     });
   };
-
-  const ava = "Microsoft Ava Online (Natural) - English (United States)";
-  const andrew = "Microsoft Andrew Online (Natural) - English (United States)";
-  const emma = "Microsoft Emma Online (Natural) - English (United States)";
-  const brian = "Microsoft Brian Online (Natural) - English (United States)";
-
-  const lang = "en-US";
 
   document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => {
