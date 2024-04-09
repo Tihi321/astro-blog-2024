@@ -24,6 +24,9 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
   const emma = "Microsoft Emma Online (Natural) - English (United States)";
   const brian = "Microsoft Brian Online (Natural) - English (United States)";
 
+  const allVoices = [ava, andrew, emma, brian];
+  let selectedVoice = brian;
+
   const lang = "en-US";
 
   const speak = (content: string, voice: any) => {
@@ -69,9 +72,13 @@ const { title, pubDate, updatedDate, heroImage, readingTime } = Astro.props;
     if (isEdge()) {
       speakButton?.classList.add("shown");
       speakButton?.addEventListener("click", () => {
-        speechSynthesis.cancel();
-        const content = document.querySelector("#content")?.textContent as string;
-        speak(content, getVoice(emma));
+        if (speechSynthesis.speaking) {
+          speechSynthesis.cancel();
+        } else {
+          const content = document.querySelector("#content")?.textContent as string;
+          selectedVoice = allVoices[(allVoices.indexOf(selectedVoice) + 1) % allVoices.length];
+          speak(content, getVoice(selectedVoice));
+        }
       });
     }
   });
