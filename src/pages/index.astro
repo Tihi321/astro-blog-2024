@@ -26,18 +26,25 @@ const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categori
         engage in philosophical discussions. My enthusiasm for technology and its potential impact
         on the future shapes both my career and personal pursuits.
       </div>
-      <h3 class="featured-title">Featured</h3>
-      <div class="featured">
-        {map(firstThreeItems, (post: any) => <a href={`/post/${post.slug}`}>{post.data.title}</a>)}
-      </div>
-      <div class="categories">
-        {
-          map(categories, (category) => (
-            <a class="category" href={`/blog/${category}`}>
-              #{category}
-            </a>
-          ))
-        }
+      <div class="featured-content">
+        <h3 class="featured-title">Featured</h3>
+        <div class="featured">
+          {
+            map(firstThreeItems, (post: any) => (
+              <a href={`/post/${post.slug}`}>{post.data.title}</a>
+            ))
+          }
+        </div>
+        <h4 class="featured-title tags-title">Tags</h4>
+        <div class="categories">
+          {
+            map(categories, (category) => (
+              <a class="category" href={`/blog/${category}`}>
+                #{category}
+              </a>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
@@ -74,12 +81,24 @@ const categories = uniq(flatMap(allPosts, (post) => get(post, ["data", "categori
   }
   .featured {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 2px;
+  }
+
+  .tags-title {
+    margin: 16px 0 4px 0;
+    font-weight: bold;
+    font-size: 14px;
   }
 
   .categories {
-    margin: 12px 0;
+    margin: 4px 0;
+  }
+
+  .featured-content {
+    max-width: 500px;
+    margin: 16px auto;
   }
 </style>
