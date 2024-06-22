@@ -13,6 +13,15 @@ import Layout from "../layouts/Layout.astro";
       title?.addEventListener("click", () => {
         code?.classList.toggle("show");
       });
+
+      const copyTextButton = document.createElement("button");
+      copyTextButton.textContent = "Copy";
+      copyTextButton.addEventListener("click", () => {
+        const text = code?.textContent || "";
+        navigator.clipboard.writeText(text);
+      });
+
+      item.appendChild(copyTextButton);
     });
   });
 </script>
@@ -21,6 +30,7 @@ import Layout from "../layouts/Layout.astro";
   <h3 class="featured-title">Prompt templates</h3>
   <div class="info">
     <p>Prompting techniques and templates for better A.I. promting</p>
+    <a href="https://cdn.tihomir-selak.from.hr/assets/api/prompts.json">Prompts</a>
     <a href="/split-generatos">Split generators</a>
   </div>
   <div class="template">
@@ -59,6 +69,24 @@ Please craft the perfect prompt for my request below
     padding: 32px 0;
     border-bottom: 1px solid var(--primary);
     margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .template {
+    position: relative;
+
+    button {
+      position: absolute;
+      top: 3px;
+      right: 4px;
+      padding: 8px;
+      background: var(--focus);
+      color: var(--primary);
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
   }
 
   .template-title {
