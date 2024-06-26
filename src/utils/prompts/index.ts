@@ -1,2 +1,2 @@
 export * from "./ollama";
-export * from "./expter";
+export * from "./exptert";
