@@ -3,7 +3,8 @@
 
 # dependencies
 node_modules/
-src/content/.obsidian/**/*
+src/content/.obsidian/
+src/content/blog/.obsidian/
 
 # logs
 npm-debug.log*
